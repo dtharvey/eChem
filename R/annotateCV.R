@@ -1,6 +1,6 @@
 #' Annotate Cyclic Voltammogram
 #'
-#' Plots a cyclic voltammogram and annotates it with values for the cathodic peak potential (Epc), the anodic peak potential (Epa), the difference in peak potentials (Delta E), the cathodic peak current (ip,c), the anodic peak current (ip,a), and the peak current ratio (either ip,c/ip,a or ip,a/ip,c). The baseline for deteriming peak currents is set using a defined percentage of points at the beginning of the forward and the reverse scans. Values are reported as unmeasurable when they fall below a threshold value.
+#' Plots a cyclic voltammogram and annotates it with values for the cathodic peak potential (Epc), the anodic peak potential (Epa), the difference in peak potentials (Delta E), the cathodic peak current (ip,c), the anodic peak current (ip,a), and the peak current ratio (either ip,c/ip,a or ip,a/ip,c). The baseline for determining peak currents is set using a defined percentage of points at the beginning of the forward and the reverse scans. Values are reported as unmeasurable when they fall below a threshold value.
 #'
 #' @param filename Name of the file that contains the results of a simulated cyclic voltammetry experiment.
 #' @param forward.per The percentage of points from the beginning of the forward scan used to set the baseline for measuring the peak current.

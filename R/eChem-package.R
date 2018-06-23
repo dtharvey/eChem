@@ -3,9 +3,9 @@
 #' A collection of functions for simulating four different types of
 #' electrochemistry experiments: two potential step experiments
 #' (chronoamperometry and chronocoulometry) and two potential scan experiments
-#' (linear-sweep voltammetry and cyclic voltammetry). Each simuluation allows
+#' (linear-sweep voltammetry and cyclic voltammetry). Each simulation allows
 #' for either an oxidation reaction or for a reduction reaction, and allows for
-#' a single following or a single preceeding chemical reaction. Also included
+#' a single following or a single preceding chemical reaction. Also included
 #' are a variety of functions for displaying the result of a simulation in
 #' either a static or animated format.
 #'

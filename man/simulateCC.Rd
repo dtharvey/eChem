@@ -20,7 +20,7 @@ chemical reaction that either precedes or follows the redox
 reaction. The function operates on an object created using
 \code{caSim}, which simulates the corresponding
 chronoamperometry experiment, integrating current over time
-using the trapazoidal integration rule.
+using the trapezoidal integration rule.
 }
 \examples{
 ex_ca = simulateCA(e.start = 0.25, e.pulse = -0.25, e.form = 0,

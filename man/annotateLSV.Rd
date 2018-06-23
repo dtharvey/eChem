@@ -20,7 +20,7 @@ Returns a plot of the linear sweep voltammogram with annotations.
 Plots a linear sweep voltammogram and annotates it with values
 for either the cathodic peak potential (Epc) and cathodic peak
 current (ip,c), or the anodic peak potential (Epa) and the
-anodic peak current (ip,a). The baseline for deteriming the
+anodic peak current (ip,a). The baseline for determining the
 peak currents is set using a defined percentage of points at
 the beginning of potential scan.
 }

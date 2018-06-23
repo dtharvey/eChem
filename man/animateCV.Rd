@@ -14,7 +14,7 @@ animateCV(filename, out_type = c("html", "gif"), out_name = "aniCV")
 \item{out_name}{Name used for the file(s) created by this function.}
 }
 \value{
-For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} arguement. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} arguement.
+For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} argument. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} argument.
 }
 \description{
 Creates either an HTML or a GIF animation of a cyclic

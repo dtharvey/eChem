@@ -9,7 +9,7 @@
 #' @param e.start Initial potential (in volts).
 #' @param e.pulse Potential after applying the initial pulse (in volts).
 #' @param e.form Formal potential for the redox reaction (in volts).
-#' @param mechanism Mechanism for the electrochemical system; one of \code{E} for redox reaction only, \code{EC} for redox reaction with a following chemical reaction, or \code{CE} for redox reaction with a preceeding chemical reaction. Default is \code{E}.
+#' @param mechanism Mechanism for the electrochemical system; one of \code{E} for redox reaction only, \code{EC} for redox reaction with a following chemical reaction, or \code{CE} for redox reaction with a preceding chemical reaction. Default is \code{E}.
 #' @param ko Standard heterogeneous electron transfer rate constant for the redox reaction (in cm/s).
 #' @param kcf Homogeneous first-order rate constant for the forward chemical reaction (in s^-1).
 #' @param kcr Homogeneous first-order rate constant for the reverse chemical reaction (in s^-1).

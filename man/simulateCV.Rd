@@ -16,7 +16,7 @@ simulateCV(e.start = 0, e.switch = -0.5, e.form = -0.25,
 
 \item{e.form}{Formal potential for the redox reaction (in volts).}
 
-\item{mechanism}{Mechanism for the electrochemical system; one of \code{E} for redox reaction only, \code{EC} for redox reaction with a following chemical reaction, or \code{CE} for redox reaction with a preceeding chemical reaction. Default is \code{E}.}
+\item{mechanism}{Mechanism for the electrochemical system; one of \code{E} for redox reaction only, \code{EC} for redox reaction with a following chemical reaction, or \code{CE} for redox reaction with a preceding chemical reaction. Default is \code{E}.}
 
 \item{ko}{Standard heterogeneous electron transfer rate constant for the redox reaction (in cm/s).}
 

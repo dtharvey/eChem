@@ -13,7 +13,7 @@ plotCV(filenames = list(file1 = NULL, file2 = NULL), legend_text = NULL,
 \arguments{
 \item{filenames}{A list giving the names of 1--5 files that contain the results of a simulated cyclic voltammetry experiment.}
 
-\item{legend_text}{Optional vector that contains text to include in a legend. Default is NULL, which supresses the legend.}
+\item{legend_text}{Optional vector that contains text to include in a legend. Default is NULL, which surpresses the legend.}
 
 \item{legend_position}{One of \code{topleft}, \code{topright}, \code{bottomleft}, or \code{bottomright}; defaults to \code{topleft}.}
 
@@ -36,7 +36,7 @@ default plot does not include a legend or a title, but
 providing a vector of character strings to legend_text adds a
 legend to the final plot, and adding a character string for
 main_title adds a title to the plot. Line widths, line types,
-line colors, pointsymbols, and point colors have default
+line colors, point symbols, and point colors have default
 values that can be adjusted. Note: this function accepts both
 full data files created using \code{cvSim} or reduced data
 files created \code{sampleCV}.

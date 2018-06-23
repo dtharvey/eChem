@@ -15,7 +15,7 @@ plotCA(filenames = list(file1 = NULL, file2 = NULL), scale = 1,
 
 \item{scale}{Setting to a value less than 1 adjusts the \emph{y}-axis limits so that the limits are not defined by the current spike.}
 
-\item{legend_text}{Optional vector that contains text to include in a legend. Default is NULL, which supresses the legend.}
+\item{legend_text}{Optional vector that contains text to include in a legend. Default is NULL, which surpresses the legend.}
 
 \item{legend_position}{One of \code{topleft}, \code{topright}, \code{bottomleft}, or \code{bottomright}; defaults to \code{topleft}.}
 

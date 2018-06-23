@@ -22,7 +22,7 @@ annotateCV(filename, main_title = NULL, forward.per = 5, reverse.per = 5,
 Returns a plot of the cyclic voltammogram with annotations.
 }
 \description{
-Plots a cyclic voltammogram and annotates it with values for the cathodic peak potential (Epc), the anodic peak potential (Epa), the difference in peak potentials (Delta E), the cathodic peak current (ip,c), the anodic peak current (ip,a), and the peak current ratio (either ip,c/ip,a or ip,a/ip,c). The baseline for deteriming peak currents is set using a defined percentage of points at the beginning of the forward and the reverse scans. Values are reported as unmeasurable when they fall below a threshold value.
+Plots a cyclic voltammogram and annotates it with values for the cathodic peak potential (Epc), the anodic peak potential (Epa), the difference in peak potentials (Delta E), the cathodic peak current (ip,c), the anodic peak current (ip,a), and the peak current ratio (either ip,c/ip,a or ip,a/ip,c). The baseline for determining peak currents is set using a defined percentage of points at the beginning of the forward and the reverse scans. Values are reported as unmeasurable when they fall below a threshold value.
 }
 \examples{
 

@@ -12,7 +12,7 @@
 #'
 #' @param filenames A list giving the names of 1--5 files that contain the results of a simulated chronomperometry experiment.
 #' @param scale Setting to a value less than 1 adjusts the \emph{y}-axis limits so that the limits are not defined by the current spike.
-#' @param legend_text Optional vector that contains text to include in a legend. Default is NULL, which supresses the legend.
+#' @param legend_text Optional vector that contains text to include in a legend. Default is NULL, which surpresses the legend.
 #' @param legend_position One of \code{topleft}, \code{topright}, \code{bottomleft}, or \code{bottomright}; defaults to \code{topleft}.
 #' @param main_title An optional main title.
 #' @param line_widths A vector of line widths for the individual voltammograms; defaults to a common line width of 2, but can be adjusted by supplying a vector with desired values.

@@ -8,10 +8,10 @@
 #' that the \code{animation} package is installed.
 #'
 #' @param filename Name of the file that contains the results of a linear sweep voltammetry simulation.
-#' @param out_type dentifies the type of file generated, either an HTML file or a GIF file.
+#' @param out_type identifies the type of file generated, either an HTML file or a GIF file.
 #' @param out_name Name used for the file(s) created by this function.
 #'
-#' @return For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} arguement. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} arguement.
+#' @return For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} argument. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} argument.
 #'
 #' @importFrom graphics par plot grid lines legend
 #'

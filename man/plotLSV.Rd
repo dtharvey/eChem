@@ -13,7 +13,7 @@ plotLSV(filenames = list(file1 = NULL, file2 = NULL), legend_text = NULL,
 \arguments{
 \item{filenames}{A list giving the names of 1--5 files that contain the results of a simulated linear sweep voltammetry experiment.}
 
-\item{legend_text}{Optional vector that contains text to include in a legend. Default is NULL, which supresses the legend.}
+\item{legend_text}{Optional vector that contains text to include in a legend. Default is NULL, which surpresses the legend.}
 
 \item{legend_position}{One of \code{topleft}, \code{topright}, \code{bottomleft}, or \code{bottomright}; defaults to \code{topleft}.}
 

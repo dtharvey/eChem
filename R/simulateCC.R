@@ -7,7 +7,7 @@
 #' reaction. The function operates on an object created using
 #' \code{caSim}, which simulates the corresponding
 #' chronoamperometry experiment, integrating current over time
-#' using the trapazoidal integration rule.
+#' using the trapezoidal integration rule.
 #'
 #' @param filename The filename that contains the results of a chronampeometry simulation created using the \code{caSim} function.
 #'
