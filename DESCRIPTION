@@ -14,6 +14,7 @@ Description: The functions in this package simulate cyclic voltammetry,
     ways to display and to examine the results of these simulations.
     The primary purpose of this package is to provide tools for
     use in courses in analytical chemistry.
+URL: https://github.com/dtharvey/eChem
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
