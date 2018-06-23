@@ -1,0 +1,27 @@
+Package: eChem
+Type: Package
+Title: Simulations for Electrochemistry Experiments
+Version: 1.0.0
+Author: David Harvey
+Maintainer: David Harvey <harvey@depauw.edu>
+Description: The functions in this package simulate cyclic voltammetry, 
+    linear-sweep voltammetry (both with and without stirring of the 
+    solution), and single-pulse and double-pulse chronoamperometry 
+    and chronocoulometry experiments using the method outlined in 
+    Gosser, D. K. Cyclic Voltammetry Simulation and Analysis of 
+    Reaction Mechanisms, VCH, New York, 1993 and inBrown, J. H., 
+    J. Chem. Educ., 2015, 92, 1490-1496. Additional functions provide 
+    ways to display and to examine the results of these simulations.
+    The primary purpose of this package is to provide tools for
+    use in courses in analytical chemistry.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports:
+    plot3D,
+    animation
+Suggests: 
+    knitr,
+    rmarkdown
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr

@@ -1,0 +1,74 @@
+---
+title: "Computational Details"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::pdf_document
+header-includes:
+- \usepackage{chemformula}
+- \usepackage{amsmath}
+vignette: >
+  %\VignetteIndexEntry{Computational Details}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+# How Are The Simulations Accomplished?
+
+The linear sweep voltammetry, cyclic voltammetry, and chronoamperomety simulations in this package use the explicit finite difference computational method outlined in Gosser, D. K. *Cyclic Voltammetry Simulation and Analysis of Reaction Mechanisms*, VCH, New York, 1993, and in Brown, J. H. "Development and Use of a Cyclic Voltammetry Simulator to Introduce Undergraduate Students to Electrochemical Simulations" *J. Chem. Educ.*, **2015**, *92*, 1490--1496; chronocoulometry simulations are completed by integrating the result of the corresponding chronoamperometry experiment. Although Gosser's and Brown's treatements are developed to simulate cyclic voltammetry experiments, their approach is easy to generalize to other diffusion-controlled electrochemistry experiments.
+
+Each simulation uses separate diffusion grids to calculate and to store the concentrations of Ox and Red---and, for an EC or a CE mechanism, the concentrations of Z---as a function of distance from the electrode's surface and as a function of elapsed time (and, therefore, of applied potential in chronoamperometry, cyclic voltammetry, and linear sweep voltammetry). Each diffusion grid is a matrix with $n_{i}$ rows and $n_{j}$ columns where a row is a discrete moment in time and a column is a discrete distance from the electrode's surface; thus, for example, matrix element [Ox]~*i, j*~ gives the concentration of Ox at time *i* and at distance *j*.
+
+The mass transfer of Ox, Red, and Z are governed by Fick's Second Law of Diffusion
+$$\frac {\delta C} {\delta t} = D \frac {\delta^{2}C} {\delta x^{2}}$$
+where $C$ is a species' concentration, $D$ is its diffusion coefficient, and $\delta t$ and $\delta x$ are increments in time and distance, respectively. When using the explicit finite difference method for an E-only mechanism, Fick's Second Law is approximated as
+$$\frac {C_{i, j} - C_{i-1, j}} {\Delta t} = D \left[ \frac {C_{i-1, j-1} - 2C_{i-1, j} + C_{i-1, j+1}} {\Delta x^{2}} \right]$$
+which means that the element $C_{i,j}$ in a diffusion grid is approximated
+$$C_{i, j} = C_{i-1, j} + \lambda \left[ C_{i-1, j-1} - 2C_{i-1, j} + C_{i-1, j+1} \right]$$
+where $\lambda$ is equivalent to $\frac {D \Delta t} {\Delta x^{2}}$. In essence, this approximation assumes that for each unit of time, diffusion is limited to movement between adjacent locations in the diffusion grid. For a mechanism that includes a chemical reaction, the concentrations of Ox, Red, and Z are modified to include a contribution from the chemical reaction. For example, the concentration of Ox in a CE mechanism, where Ox exists is an equilibrium with Z, is approximated as
+$$C_{i, j} = C_{i-1, j} + \lambda \left[ C_{i-1, j-1} - 2C_{i-1, j} + C_{i-1, j+1} \right] + k_{\textrm{chem,f}} \Delta t C_{i-1, j} - k_{\textrm{chem,r}} \Delta t C_{i-1, j}$$
+where $k_{\textrm{chem,f}}$ and $k_{\textrm{chem,r}}$ are the homogeneous first-order rate constants for the chemical reaction's forward and reverse directions.
+
+Because each matrix element in a diffusion grid is calculated using values from the immediately preceding increment in time and using values from distances that are immediately adjacent, we cannot use this approach to calculate elements in a diffusion grid's first column, in its last column, and in its first row. The elements in a diffusion grid's last column, which is the distance furthest from the electrode's surface, are filled using that species' initial concentration in bulk solution; that is, the diffusion grid's width, which is defined as $6 \times \sqrt{Dt_{\textrm{total}}}$, where $t_{\textrm{total}}$ is the time to complete the experiment, is sufficient to ensure that the diffusion layer never extends beyond the diffusion grid's last column. The elements in a diffusion grid's first row, which is for time $t = 0$, also are filled using that species' concentration in bulk solution.
+
+To calculate the concentrations of Ox and of Red at the electrode's surface---that is, to fill in the diffusion grid's first column---we first calculate the flux of Ox, $J_{\textrm{Ox}}$, to the electrode's surface using the concentrations of Ox and of Red in the increment immediately adjacent to the electrode
+$$J_{\textrm{Ox}} = - \frac {k_{f}[\textrm{Ox}]_{i,2} - k_{b}[\textrm{Red}]_{i, 2}} {1 + \frac {k_{f} \Delta x} {D} + \frac {k_{b} \Delta x} {D}}$$
+Next, we calcualte the potential-dependent, heterogeneous electron-transfer rate constants, $k_{f}$ and $k_{b}$, using the Butler-Volmer equation
+$$k_{f} = k^{\textrm{o}}e^{-\alpha n F (E - E^{\textrm{o} \prime})/RT}$$
+$$k_{b} = k^{\textrm{o}}e^{(1 - \alpha) n F (E - E^{\textrm{o} \prime})/RT}$$
+where $k^{\textrm{o}}$ is the potential-independent, heterogeneous electron-transfer rate constant, $\alpha$ is the transfer coefficient, $n$ is the number of electrons in the redox reaction, $E$ is the applied potential, $E^{\textrm{o} \prime}$ is the redox couple's standard state formal potential, $F$ is Faraday's constant, $R$ is the gas constant, and $T$ is the temperature in Kelvin. The concentration of Ox at the electrode's surface, therefore, is
+$$[\textrm{Ox}]_{i, 1} = [\textrm{Ox}]_{i, 2} + \frac {J_{\textrm{Ox}} \Delta x} {D}$$
+Because the flux of Red is equal in magnitude but opposite in sign to that for Ox, we also know that
+$$J_{\textrm{Red}} = -J_{\textrm{Ox}}$$
+$$[\textrm{Red}]_{i, 1} = [\textrm{Red}]_{i, 2} + \frac {J_{\textrm{Red}} \Delta x} {D}$$
+By definition, the flux of Z at the electrode surface is zero and
+$$[\textrm{Z}]_{i, 1} = [\textrm{Z}]_{i, 2}$$
+Finally, the total current at each increment in time is calculated using the flux for Ox
+$$i = -n F A J_{\textrm{Ox}}$$
+where $A$ is the electrode's surface area.
+
+# How Accurate Is A Simluations?
+
+An important constraint on these simulations is that diffusion is limited to adjacent points on the diffusion grid, which, in turn, requires that
+$$\frac {D \Delta t} {\Delta x^2} \le 0.5$$
+As $\Delta t = \frac {t_{\textrm{total}}} {n_{\Delta t}}$ and $\Delta x = \frac {x_{\textrm{total}}} {\Delta x} = \frac {6 \sqrt{D \times t_{\textrm{total}}}} {n_{\Delta x}}$, the number of increments in distance, $n_{\Delta x}$, and the number of increments in time, $n_{\Delta t}$, must satisfy the relationship
+$$n_{\Delta x} < \sqrt{18 \times n_{\Delta t}}$$
+When this is not the case, the simulation produces oscillations in the calculated current; for this reason, the simulations include a check to ensure that $n_{\Delta x}$ and $n_{\Delta t}$ satisify this criterion.
+
+The accuracy of a simulation improves if there are more discrete time units and more discrete distance units as these determine the increments in time, $\Delta t$, and in distance, $\Delta x$, both of which affect the calculated values for $C_{i,j}$, for $J_{\textrm{Ox}}$ and for $J_{\textrm{Red}}$, and for $i$. In addition, for linear-sweep voltammetry and for cyclic voltammetry, the number of time units determines the increments in applied potential, $\Delta E$, which affects the calculated values for $k_{f}$ and $k_{b}$, and, therefore, the calculated values for $J_{\textrm{Ox}}$, $J_{\textrm{Red}}$, and $i$. 
+
+Although increasing the number of time units improves accuracy, it requires an increase in the time needed to complete the computation. For example, Table 1 shows how the number of time units and of distance units affects the accuracy of a cyclic voltammetry simultion---defined here as $\Delta E$, which has an expected value of 59 mV for the function's default conditions---and the time needed to complete the computations. 
+
+|number of time units|number of distance units|computation time (s)|$\Delta E$ (V)|
+|-------------------:|-----------------------:|-------------------:|-------------:|
+|200|50|0.02|80|
+|1000|100|0.20|69|
+|2000|180|0.60|66|
+|4000|260|1.80|62|
+|10000|420|7.30|61|
+
+Table: Effect of Diffusion Grid's Size on Computation Time and Accuracy
+
+The default option for all simulations is 2000 discrete intervals in time and 180 discrete intervals in distance---a total of 360,000 individual elements per diffusion grid---which provides a reasonable compromise between accuracy and run-time. The user may adjust these values to meet the needs of a particular simulation.
+
+When simulating a linear-sweep voltammetry or a cyclic voltammetry experiment with an EC or a CE mechanism, Gosser suggests that accuracy is reasonable if the number of increments in time satisfies the relationship
+$$n_{\Delta t} \ge 4 \times t_{\textrm{exp}} \times k_{\textrm{chem}}$$
+where $t_{\textrm{exp}}$ is the time to complete the scan and $k_{\textrm{chem}}$ is the homogeneous chemical rate constant. This places constraints on the scan rate and on the chemical rate constants, $k_{\textrm{chem,f}}$ and $k_{\textrm{chem,r}}$. The simulations include a check to ensure that $n_{\Delta t}$ satisfies this criterion.

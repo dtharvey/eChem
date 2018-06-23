@@ -1,0 +1,74 @@
+---
+title: "Overview of the eChem Package"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::pdf_document
+header-includes:
+- \usepackage{chemformula}
+- \usepackage{amsmath}
+vignette: >
+  %\VignetteIndexEntry{Overview of the eChem Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# What Simulations Are Possible?
+
+This package includes functions to simulate four different types of electrochemistry experiments: two potential step experiments (chronoamperometry and chronocoulometry), and two potential scan experiments (linear-sweep voltammetry and cyclic voltammetry). As shown in Table 1, each simluation allows for an initial oxidation reaction or an initial reduction reaction, and allows for a single preceding or a single following chemical step, where Z is a non-electroactive species. 
+
+|general mechanism|initial reduction|initial oxidation|
+|-----------------|:------------------:|:------------------:|
+|E only|$\ch{Ox + \textit{n} e- <=> Red}$|$\ch{Red <=> Ox + \textit{n} e-}$|
+||||
+|EC|$\ch{Ox + \textit{n} e- <=> Red}$|$\ch{Red <=> Ox + \textit{n} e-}$|
+||$\ch{Red <=> Z}$|$\ch{Ox <=> Z}$|
+||||
+|CE|$\ch{Z <=> Ox}$|$\ch{Z <=> Red}$|
+||$\ch{Ox + \textit{n} e- <=> Red}$|$\ch{Red <=> Ox + \textit{n} e-}$|
+
+Table: Mechanisms for Electrochemistry Simulations
+
+# How Are Functions Named?
+
+The functions in this package take the general form `actionExperiment`, where `action` explains what the function does and `Experiment` indicates the specific electrochemistry experiment. The available actions are `simulate`, `sample`, `plot`, `annotate`, and `animate`; the experiments are identified as `CA`, for chronoamperometry, `CC` for chronocoulometry, `CV` for cyclic voltammetry, and `LSV` for linear sweep voltammetry.
+
+# Where Can I Obtain More Information?
+
+The vignette "Computational Details" explains how the simulations are completed and provides information on the accuracy of the simulations. The vignette "Using the eChem Package" explains how to use the package's functions to simulate and to visualize electrochemical experiments. Finally, the vignette "Additional Examples" provides detailed examples of how to use the package's functions.
+
+# What Additional Resources Are Available?
+
+The following is a list of additional resources that provide introductions either to electrochemistry, in general, or to specific electrochemical methods, in particular. Items 1, 4-9, and 11, are written specifically for a more general audience.
+
+1. Aristov, N.; Habekost, A. "Cyclic Voltammetry - A Versatile Electrochemical Method Investigating Electron Transfer Processes," *World Journal of Chemical Education* **2015**, *3(5)*, 115-119.
+2. Bard, A. J.; Faulkner, L. R. *Electrochemical Methods: Fundamentals and Applications*, John Wiley & Sons: New York, **1980**.
+3. Bott, A. W. "Characterization of Chemical Reactions Coupled to Electron Transfer Reactions Using Cyclic Voltammetry," *Current Separations* **1999**, *18(1)*, 9-16.
+4. Elgrishi, N.; Rountree, K. J.; McCarthy, B. D.; Rountree, E. S.; Eisenhart, T. T.; Dempsey, J. L. "A Practial Beginner's Guide to Cyclic Voltammetry," *J. Chem. Educ.* **2018**, *95(2)*, 197-206.
+5. Evans, D. H.; O'Connell, K. M.; Petersen, R. A.; Kelly, Michael, J. "Cyclic Voltammetry," *J. Chem. Educ.* **1983**, *60(4)*, 290-293.
+6. Faulkner, L. R. "Understanding Electrochemistry: Some Distinctive Concepts," *J. Chem. Educ.* **1983**, *60(4)*, 262-264.
+7. Kelly, R. "Analytical Electrochemistry: The Basic Concepts," Analytical Sciences Digital Library. (http://community.asdlib.org/activelearningmaterials/analytical-electrochemistry-the-basic-concepts/).
+8. Mabbott, G. A. "An Introduction to Cyclic Voltammetry," **1983**, *60(9)*, 697-702.
+9. Maloy, J. T. "Factors Affecting the Shape of Current-Potential Curves" *J. Chem. Educ.* **1983**, *60(4)*, 285-289.
+10. Scholz, F. Ed. *Electroanalytical Methods*,  Springer: Berlin, **2002**.
+11. Smith, D. E. "Thermodynamic and Kinetic Properties of the Electrochemical Cell," *J. Chem. Educ.* **1983**, *60(4)*, 299-301.
+
+The following additional resources provide introductions to the digital simulation of electrochemistry experiments with an emphasis on cyclic voltammetry. Item 4 is written specifically for a more general audience.
+
+1. Bott, A. W. "Simulation of Cyclic Voltammetry Using Finite Difference Methods" *Current Separations* **2000**, *19(2)*, 45-48.
+2. Britz, D. "The Point Method for Electrochemical Digital Simulation" *Anal. Chim. Acta* **1980**, *122(3)*, 331-336.
+3. Britz, D. *Digital Simulation in Electrochemistry*, 3rd Ed., Springer-Verlag: Berlin, **2005**
+4. Brown, J. H. "Development and Use of a Cyclic Voltammetry Simulator to Introduce Undergraduate Students to Electrochemical Simulations" *J. Chem. Educ.* **2015**, *92*, 1490-1496.
+5. Gosser, D. K. *Cyclic Voltammetry: Simulation and Analysis of Reaction Mechanisms*, VCH Publishers, Inc.: New York, **1993**.
+6. Gosser, D. K.; Zhang, F. "A PC-Based General Program for the Simulation and Analysis of Cyclic Voltammetry Experiments" *Talanta* **38**, *7*, 715-722
+7. Nicholson, R. S.; Shain, I. "Theory of Stationary Electrode Polarography: Single Scan and Cyclic Methods Applied to Reversible, Irreversible, and Kinetic Systems *Anal. Chem.* **1964**, *36(4)*, 706-723.
+8. Rudolph, M.; Reddy, D. P.; Feldberg, S. W. "A Simulator for Cyclic Voltammetry Responses" *Anal. Chem.* **1994**, *66(10)*, 589A-600A.
+
+The following is a list of commercial (1, 3, 4) and non-commercial (2, 5, 6) programs that simulate the results of electrochemistry experiments. The imulation programs in references 1--4 run in various versions of Windows or MS-DOS, but not in MacOS. The simulation program in reference 5 uses Excel and will run on both Windows and MacOS operating systems. The simulation program in reference 6 uses MatLab and will run on both Windows and MacOS operating systems.
+
+1. BASi Digisim (https://www.basinc.com/products/ec/digisim)
+2. Electrochemical Simulations Package (ESP) (http://lem.ch.unito.it/chemistry/esp_manual.html)
+3. ELSIM (http://www.cyfronet.krakow.pl/~nbbienia/elsim3ad.html) 
+4. DigiElch (https://www.gamry.com/digielch-electrochemical-simulation-software/)
+5. Brown, J. H. "Development and Use of a Cyclic Voltammetry Simulator to Introduce Undergraduate Students to Electrochemical Simulations" *J. Chem. Educ.* **2015**, *92(9)*, 1490-1496 and "Analysis of Two Redox Couples in a Series: An Expanded Experiment to Introduce Undergraduate Students to Electrochemical Simulations", *J. Chem. Educ.* **2016**, *93(7)*, 1326-1329.
+6. Wang, S.; Wang, J.; Gao, Y. "Development and Use of an Open-Source, User-Friendly Package to Simulate Voltammetry Experiments", *J. Chem. Educ.* **2017**, *94(9)*, 1567-1570.
+
