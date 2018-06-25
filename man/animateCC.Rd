@@ -14,7 +14,7 @@ animateCC(filename, out_type = c("html", "gif"), out_name = "aniCC")
 \item{out_name}{Name used for the file(s) created by this function.}
 }
 \value{
-For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} argument. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} argument.
+For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} argument. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} argument. See the vignettes for examples.
 }
 \description{
 Creates either an HTML or a GIF animation of a
@@ -23,13 +23,4 @@ resulting animation displays the diffusion profiles for Ox,
 Red, and, where appropriate, Z situated above the
 chronoamperogram. Note: the \code{animateCC} function requires
 that the \code{animation} package is installed.
-}
-\examples{
-
-\dontrun{
-ex_ca = simulateCA(e.start = 0.25, e.pulse = -0.25, e.form = 0,
- pulses = "double", t.2 = 20)
-ex_cc = simulateCC(ex_ca)
-animateCC(ex_cc, out_type = "gif", out_name = "ex_cc")
-}
 }

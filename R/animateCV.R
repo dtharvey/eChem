@@ -11,17 +11,13 @@
 #' @param out_type Identifies the type of file generated, either an HTML file or a GIF file.
 #' @param out_name Name used for the file(s) created by this function.
 #'
-#' @return For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} argument. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} argument.
+#' @return For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} argument. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} argument. See the vignettes for examples.
 #'
 #' @importFrom graphics par plot grid lines legend
 #'
 #' @export
 #'
-#' @examples
-#'\dontrun{
-#'ex_cv = simulateCV(e.start = 0.25, e.switch = -0.25, e.form = 0)
-#'animateCV(ex_cv, out_type = "gif", out_name = "ex_cv")
-#'}
+
 
 animateCV = function(filename, out_type = c("html", "gif"), out_name = "aniCV"){
 

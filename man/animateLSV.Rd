@@ -14,7 +14,7 @@ animateLSV(filename, out_type = c("html", "gif"), out_name = "aniLSV")
 \item{out_name}{Name used for the file(s) created by this function.}
 }
 \value{
-For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} argument. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} argument.
+For an HTML animation, the function saves four items in the working directory: a folder with CSS files, a folder with javascript files, a folder with the image files for the animation, and a .html file; the latter two files are named using the function's \code{out_name} argument. For a GIF animation, the function saves a single .gif file using the function's \code{out_name} argument. See the vignettes for examples.
 }
 \description{
 Creates either an HTML or a GIF animation of a linear sweep
@@ -23,12 +23,4 @@ resulting animation displays the diffusion profiles for Ox,
 Red, and, where appropriate, Z situated above the linear sweep
 voltammogram. Note: the \code{animateLSV} function requires
 that the \code{animation} package is installed.
-}
-\examples{
-
-\dontrun{
-ex_lsv = simulateLSV(e.start = 0.25, e.end = -0.25, e.form = 0,
-  stir.rate = "fast")
-animateLSV(ex_lsv, out_type = "gif", out_name = "ex_lsv")
-}
 }
